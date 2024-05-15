@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <string.h>
+
+void sortString(char s[]) {
+    int n = strlen(s);
+    for (int i = 0; i < n-1; i++) {
+        for (int j = i+1; j < n; j++) {
+            if (s[i] > s[j]) {
+                // Swap characters
+                char temp = s[i];
+                s[i] = s[j];
+                s[j] = temp;
+            }
+        }
+    }
+}
+
+int findFirstRepeatedIndex(char s[]) {
+    int n = strlen(s);
+    for (int i = 0; i < n-1; i++) {
+        if (s[i] == s[i+1]) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int main() {
+    char s1[] = "tree";
+    char s2[] = "kkj";
+
+    sortString(s1);
+    sortString(s2);
+
+    int index1 = findFirstRepeatedIndex(s1);
+    int index2 = findFirstRepeatedIndex(s2);
+
+    printf("Input: \"tree\"\n");
+    printf("Output: \"%s\", starting index %d\n", s1, index1);
+
+    printf("Input: \"kkj\"\n");
+    printf("Output: \"%s\", starting index %d\n", s2, index2);
+
+    return 0;
+}
