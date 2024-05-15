@@ -1,0 +1,31 @@
+#include <stdio.h>
+int fibonacci(int n) {
+    if (n <= 1) {
+        return n;
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+void printFibonacciSeries(int n, int *sum) {
+    for (int i = 0; i < n; i++) {
+        int fib = fibonacci(i);
+        printf("%d", fib);
+        if (i < n - 1) {
+            printf(", ");
+        }
+        *sum += fib;
+    }
+    printf("\n");
+}
+
+int main() {
+    int n = 10;
+    int sum = 0;
+
+    printf("Fibonacci series:\n");
+    printFibonacciSeries(n, &sum);
+
+    printf("Sum of the series: %d\n", sum);
+    
+    return 0;
+}
